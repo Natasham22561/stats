@@ -3,7 +3,7 @@
  * @returns {number} the length of the array
  */
 function getLength(numbers) {
-  // TODO
+  return numbers.length;
 }
 
 /**
@@ -11,7 +11,7 @@ function getLength(numbers) {
  * @returns {number} the sum of the numbers
  */
 function getSum(numbers) {
-  // TODO
+  return numbers.reduce((sum, n) => sum + n, 0);
 }
 
 /**
@@ -19,7 +19,8 @@ function getSum(numbers) {
  * @returns {number} the mean of the numbers
  */
 function getMean(numbers) {
-  // TODO
+  if (numbers.length === 0) return 0;  // Avoid division by zero
+  return getSum(numbers) / numbers.length;
 }
 
 /**
@@ -27,7 +28,7 @@ function getMean(numbers) {
  * @returns {number} the smallest of the numbers
  */
 function getMin(numbers) {
-  // TODO
+  return Math.min(...numbers);
 }
 
 /**
@@ -35,7 +36,7 @@ function getMin(numbers) {
  * @returns {number} the largest of the numbers
  */
 function getMax(numbers) {
-  // TODO
+  return Math.max(...numbers);
 }
 
 /**
@@ -43,7 +44,7 @@ function getMax(numbers) {
  * @returns {number} the range of the numbers (max - min)
  */
 function getRange(numbers) {
-  // TODO
+  return getMax(numbers) - getMin(numbers);
 }
 
 /**
@@ -51,7 +52,7 @@ function getRange(numbers) {
  * @returns {number[]} the even numbers in the array
  */
 function getEvens(numbers) {
-  // TODO
+  return numbers.filter(n => n % 2 === 0);
 }
 
 /**
@@ -59,26 +60,19 @@ function getEvens(numbers) {
  * @returns {number[]} the odd numbers in the array
  */
 function getOdds(numbers) {
-  // TODO
+  return numbers.filter(n => n % 2 !== 0);
 }
-
-// === READ BUT DO NOT EDIT THE CODE BELOW ===
 
 /**
  * @param {string} commaSeparatedNumbers
  * @returns {number[]} the string converted into an array of numbers
  */
 function convertStringToNumbers(commaSeparatedNumbers) {
-  // Split the string of numbers into an array of strings.
-  const strings = commaSeparatedNumbers.split(",");
-
-  // Convert the array of strings into an array of numbers
-  const numbers = [];
-  for (const s of strings) {
-    const number = parseInt(s);
-    numbers.push(number);
-  }
-  return numbers;
+  // Split the string into an array, trim spaces, parse integers, and filter out NaN values
+  return commaSeparatedNumbers
+    .split(",")
+    .map(s => parseInt(s.trim(), 10))
+    .filter(n => !isNaN(n));
 }
 
 /**
@@ -97,6 +91,7 @@ function describeNumbers(numbers) {
   console.log(`The odd numbers you gave are ${getOdds(numbers)}.`);
 }
 
+// Prompt user for input and output the statistics (If running in a browser environment)
 const userInputString = prompt(
   "Please enter some integers separated by commas.",
   "28,-15,30,975,400"

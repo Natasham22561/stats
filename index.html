@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Stats</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <h1>Check the browser console :)</h1>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Statistics Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; }
+    input, button { font-size: 1.1rem; margin: 0.5rem 0; }
+    #result { white-space: pre-line; background: #f6f8fa; padding: 1em; margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Statistics Calculator</h1>
+  <label for="nums">Enter numbers (comma separated):</label><br>
+  <input id="nums" type="text" value="28,-15,30,975,400" size="45">
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="result"></div>
+
+  <script src="index.js"></script>
+</body>
 </html>
